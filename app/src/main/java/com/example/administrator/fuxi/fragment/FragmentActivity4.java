@@ -2,6 +2,7 @@ package com.example.administrator.fuxi.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,6 +23,7 @@ public class FragmentActivity4 extends AppCompatActivity implements View.OnClick
     private FragmentC fragmentC;
 
     private int isShow=1;
+    private FragmentManager fragmentManager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,33 +33,34 @@ public class FragmentActivity4 extends AppCompatActivity implements View.OnClick
         // 这里一定要在save为null时才加载Fragment，Fragment中onCreateView等生命周里加载根子Fragment同理
         // 因为在页面重启时，Fragment会被保存恢复，而此时再加载Fragment会重复加载，导致重叠
         if (savedInstanceState != null){
-            if(getSupportFragmentManager().findFragmentByTag(FragmentA.class.getName())== null){ //去添加fragmentA
+            fragmentManager=getSupportFragmentManager();
+            if(fragmentManager.findFragmentByTag(FragmentA.class.getName())== null){ //去添加fragmentA
                 fragmentA=FragmentA.newInstance();
 
                 // 正常情况下去 加载根Fragment
             }else {
-                fragmentA= (FragmentA) getSupportFragmentManager().findFragmentByTag(FragmentA.class.getName());
+                fragmentA= (FragmentA) fragmentManager.findFragmentByTag(FragmentA.class.getName());
             }
-            if (getSupportFragmentManager().findFragmentByTag(FragmentB.class.getName())== null){
+            if (fragmentManager.findFragmentByTag(FragmentB.class.getName())== null){
                 fragmentB=FragmentB.newInstance();
             }else {
-                fragmentB= (FragmentB) getSupportFragmentManager().findFragmentByTag(FragmentB.class.getName());
+                fragmentB= (FragmentB) fragmentManager.findFragmentByTag(FragmentB.class.getName());
             }
-            if (getSupportFragmentManager().findFragmentByTag(FragmentC.class.getName())== null){
+            if (fragmentManager.findFragmentByTag(FragmentC.class.getName())== null){
                 fragmentC=FragmentC.newInstance();
             }else {
-                fragmentC= (FragmentC) getSupportFragmentManager().findFragmentByTag(FragmentC.class.getName());
+                fragmentC= (FragmentC) fragmentManager.findFragmentByTag(FragmentC.class.getName());
             }
 
             int code=savedInstanceState.getInt("isShow");
             if (code == 1){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentA, fragmentA.getClass().getName()).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentA, fragmentA.getClass().getName()).commit();
                 isShow=1;
             }else if (code == 2){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentB, fragmentB.getClass().getName()).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentB, fragmentB.getClass().getName()).commit();
                 isShow=2;
             }else if (code ==3){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentC, fragmentC.getClass().getName()).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentC, fragmentC.getClass().getName()).commit();
                 isShow=3;
             }
 
@@ -65,7 +68,8 @@ public class FragmentActivity4 extends AppCompatActivity implements View.OnClick
             fragmentA=FragmentA.newInstance();
             fragmentB=FragmentB.newInstance();
             fragmentC=FragmentC.newInstance();
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentA, fragmentA.getClass().getName()).commit();
+            fragmentManager= getSupportFragmentManager();
+            fragmentManager .beginTransaction().replace(R.id.fragment_container, fragmentA, fragmentA.getClass().getName()).commit();
             isShow=1;
         }
 
@@ -85,22 +89,24 @@ public class FragmentActivity4 extends AppCompatActivity implements View.OnClick
     }
 
     private void ShowFragmentA(){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        fragmentManager= getSupportFragmentManager();
+        FragmentTransaction transaction =fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragmentA, fragmentA.getClass().getName());
         transaction.commit();
         isShow=1;
     }
 
     private void ShowFragmentB(){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        fragmentManager= getSupportFragmentManager();
+        FragmentTransaction transaction =fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragmentB, fragmentB.getClass().getName());
         transaction.commit();
         isShow=2;
     }
 
     private void ShowFragmentC(){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        fragmentManager= getSupportFragmentManager();
+        FragmentTransaction transaction =fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragmentC, fragmentC.getClass().getName());
         transaction.commit();
         isShow=3;
