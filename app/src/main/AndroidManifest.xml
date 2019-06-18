@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.fuxi">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".Main2Activity"
+            android:theme="@style/translucent" />
+        <activity
+            android:name=".Main3Activity"
+            android:theme="@style/dialog_style" />
+        <activity android:name=".flag.Main4Activity" />
+        <activity android:name=".flag.Main5Activity" />
+        <activity android:name=".flag.Main6Activity" />
+        <activity android:name=".fragment.FragmentActivity">
+
+        </activity>
+        <activity android:name=".fragment.FragmentActivity2">
+
+        </activity>
+        <activity android:name=".fragment.FragmentActivity3">
+
+        </activity>
+
+        <activity android:name=".fragment.FragmentActivity4"
+            android:configChanges="keyboardHidden|screenSize|orientation|locale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+</manifest>
