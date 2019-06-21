@@ -11,14 +11,39 @@ import android.widget.Toast;
 import com.example.administrator.fuxi.R;
 
 public class Main7Activity extends AppCompatActivity {
+    private LinearLayoutSubclass lin;
+
 
     private Button btn;
     private String TAG="Main7Activity";
 
+
+    private RelativeLayoutSubclass re;
+    private boolean re_isclick=false;
+    private boolean re_isenable=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
+        lin=findViewById(R.id.lin);
+        lin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG,"lin的onClick()");
+                Toast.makeText(Main7Activity.this,"lin的onClick()",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        re=findViewById(R.id.re);
+        re_isclick=re.isClickable();
+        re_isenable=re.isEnabled();
+        re.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG,"re的onClick()");
+                Toast.makeText(Main7Activity.this,"re的onClick()",Toast.LENGTH_SHORT).show();
+            }
+        });
         btn=findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +52,7 @@ public class Main7Activity extends AppCompatActivity {
                 Toast.makeText(Main7Activity.this,"btn的onClick()",Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

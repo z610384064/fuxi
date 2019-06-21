@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="translucent_background">#80000000</color>
+
+    <color name="green">#9AFF9A</color>
+    <color name="blue">#4876FF</color>
 </resources>

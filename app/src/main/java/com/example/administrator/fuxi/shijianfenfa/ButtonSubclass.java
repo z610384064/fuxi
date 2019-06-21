@@ -17,10 +17,12 @@ public class ButtonSubclass extends android.support.v7.widget.AppCompatButton {
             case MotionEvent.ACTION_DOWN:
 
                 Log.e(TAG,"---> ButtonSubclass中调用dispatchTouchEvent()--->ACTION_DOWN");
+//                return true;
                 break;
             case MotionEvent.ACTION_MOVE:
 
                 Log.e(TAG,"---> ButtonSubclass中调用dispatchTouchEvent()--->ACTION_MOVE");
+//                return true;
                 break;
             case MotionEvent.ACTION_UP:
 
@@ -29,16 +31,15 @@ public class ButtonSubclass extends android.support.v7.widget.AppCompatButton {
                 break;
         }
         return super.dispatchTouchEvent(event);
-//        return true;
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Log.e(TAG,"---> ButtonSubclass中调用onTouchEvent()--->ACTION_DOWN");
-                return true;
-//                break;
+                break;
             case MotionEvent.ACTION_MOVE:
                 Log.e(TAG,"---> ButtonSubclass中调用onTouchEvent()--->ACTION_MOVE");
                 break;
@@ -48,6 +49,5 @@ public class ButtonSubclass extends android.support.v7.widget.AppCompatButton {
                 break;
         }
         return super.onTouchEvent(event);
-//        return true;
     }
 }

@@ -2,17 +2,28 @@
 <com.example.administrator.fuxi.shijianfenfa.LinearLayoutSubclass
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lin"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green"
     android:orientation="vertical"
     tools:context=".shijianfenfa.Main7Activity">
+
+    <com.example.administrator.fuxi.shijianfenfa.RelativeLayoutSubclass
+        android:id="@+id/re"
+        android:layout_width="200dp"
+        android:clickable="true"
+        android:layout_height="200dp"
+        android:background="@color/blue">
 
     <com.example.administrator.fuxi.shijianfenfa.ButtonSubclass
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="点击"/>
+    </com.example.administrator.fuxi.shijianfenfa.RelativeLayoutSubclass>
 
 
 </com.example.administrator.fuxi.shijianfenfa.LinearLayoutSubclass>
